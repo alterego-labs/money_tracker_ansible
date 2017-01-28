@@ -1,0 +1,3 @@
+---
+money_tracker:
+  app_path: /var/www/money_tracker

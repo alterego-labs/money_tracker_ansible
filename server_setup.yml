@@ -1,0 +1,8 @@
+---
+
+- name: Server preparations
+  hosts: webservers
+  become: Yes
+  roles:
+    - { name: angstwad.docker_ubuntu, tags: [docker, setupping] }
+    - { name: money_tracker, tags: [app] }

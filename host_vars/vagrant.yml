@@ -1,0 +1,15 @@
+---
+ansible_host: 127.0.0.1
+ansible_port: 2222
+ansible_user: vagrant
+ansible_ssh_private_key_file: .vagrant/machines/default/virtualbox/private_key
+
+app:
+  host: localhost
+  secret_key_base: wYVVEASeQyBo40NeI3zjUFrR7nWvi8jV5lMfAR4dTCYwyPXYMBs8HuSw63np5KN/
+
+database:
+  user_login: sergio
+  user_password: sergio
+  db_name: money_tracker_prod
+  db_host: postgres
