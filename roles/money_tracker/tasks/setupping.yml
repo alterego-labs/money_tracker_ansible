@@ -6,7 +6,7 @@
 
 - name: Clone application repo
   git:
-    repo: "git@github.com:alterego-labs/money_tracker.git"
+    repo: "{{money_tracker.repo}}"
     dest: "{{money_tracker.app_path}}"
   tags: [setupping]
 
@@ -26,3 +26,4 @@
   shell: "./docker/manager.sh build"
   args:
     chdir: "{{money_tracker.app_path}}"
+  tags: [setupping]
