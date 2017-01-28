@@ -8,6 +8,7 @@
   git:
     repo: "{{money_tracker.repo}}"
     dest: "{{money_tracker.app_path}}"
+    accept_hostkey: Yes
   tags: [setupping]
 
 - name: Create database vars config

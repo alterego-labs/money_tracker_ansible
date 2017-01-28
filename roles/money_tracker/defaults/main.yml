@@ -1,4 +1,4 @@
 ---
 money_tracker:
   app_path: /var/www/money_tracker
-  repo: git@github.com:alterego-labs/money_tracker.git 
+  repo: "https://github.com/alterego-labs/money_tracker.git"

@@ -4,8 +4,10 @@
   git:
     repo: "{{money_tracker.repo}}"
     dest: "{{money_tracker.app_path}}"
+    accept_hostkey: Yes
     clone: no
     update: yes
+    force: yes
   tags: [updating]
 
 - name: Stop docker containers
@@ -18,6 +20,12 @@
   shell: "./docker/manager.sh build"
   args:
     chdir: "{{money_tracker.app_path}}"
+  tags: [updating]
+  register: build_result
+
+- name: The result of building containers command
+  debug:
+    var: build_result
   tags: [updating]
 
 - name: Run docker containers
