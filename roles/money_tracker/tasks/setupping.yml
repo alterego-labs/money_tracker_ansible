@@ -27,3 +27,9 @@
   args:
     chdir: "{{money_tracker.app_path}}"
   tags: [setupping]
+
+- name: Run docker containers
+  shell: "./docker/manager.sh run"
+  args:
+    chdir: "{{money_tracker.app_path}}"
+  tags: [setupping]

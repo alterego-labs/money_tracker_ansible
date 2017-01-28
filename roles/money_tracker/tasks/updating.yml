@@ -1,0 +1,27 @@
+---
+
+- name: Update application repo
+  git:
+    repo: "{{money_tracker.repo}}"
+    dest: "{{money_tracker.app_path}}"
+    clone: no
+    update: yes
+  tags: [updating]
+
+- name: Stop docker containers
+  shell: "./docker/manager.sh stop"
+  args:
+    chdir: "{{money_tracker.app_path}}"
+  tags: [updating]
+
+- name: Build docker containers
+  shell: "./docker/manager.sh build"
+  args:
+    chdir: "{{money_tracker.app_path}}"
+  tags: [updating]
+
+- name: Run docker containers
+  shell: "./docker/manager.sh run"
+  args:
+    chdir: "{{money_tracker.app_path}}"
+  tags: [updating]
