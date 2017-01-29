@@ -11,10 +11,10 @@
     version: "{{money_tracker.git_version}}"
   tags: [updating]
 
-- name: Stop docker containers
-  shell: "./docker/manager.sh stop"
-  args:
-    chdir: "{{money_tracker.app_path}}"
+- name: Run money tracker service
+  service:
+    name: money_tracker
+    state: stopped
   tags: [updating]
 
 - name: Build docker containers
@@ -29,8 +29,8 @@
     var: build_result
   tags: [updating]
 
-- name: Run docker containers
-  shell: "./docker/manager.sh run"
-  args:
-    chdir: "{{money_tracker.app_path}}"
+- name: Run money tracker service
+  service:
+    name: money_tracker
+    state: started
   tags: [updating]

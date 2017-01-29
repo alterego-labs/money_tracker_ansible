@@ -1,0 +1,43 @@
+#! /bin/sh
+### BEGIN INIT INFO
+# Provides: money_tracker
+# Required-Start: $remote_fs $syslog
+# Required-Stop: $remote_fs $syslog
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: Money Tracker App
+# Description: This file starts and stops Money Tracker App
+# 
+### END INIT INFO
+
+INSTALL_DIR={{money_tracker.app_path}}
+SCRIPT_PATH="./docker/manager.sh"
+
+do_start(){
+   cd $INSTALL_DIR & $SCRIPT_PATH run;
+   echo "Money Tracker app is started!";
+}
+
+do_stop(){
+   cd $INSTALL_DIR & $SCRIPT_PATH stop;
+   echo "Money Tracker app is stopped!";
+}
+
+case "$1" in
+ start)
+   do_start();
+   ;;
+ stop)
+   do_stop();
+   sleep 10
+   ;;
+ restart)
+   so_stop();
+   sleep 20
+   so_start();
+   ;;
+ *)
+   echo "Usage: money_tracker {start|stop|restart}" >&2
+   exit 3
+   ;;
+esac
