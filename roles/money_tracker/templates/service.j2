@@ -25,19 +25,15 @@ do_stop(){
 
 case "$1" in
  start)
-   do_start();
-   ;;
+   do_start;;
  stop)
-   do_stop();
-   sleep 10
-   ;;
+   do_stop
+   sleep 10;;
  restart)
-   so_stop();
+   so_stop
    sleep 20
-   so_start();
-   ;;
+   so_start;;
  *)
    echo "Usage: money_tracker {start|stop|restart}" >&2
-   exit 3
-   ;;
+   exit 3;;
 esac
