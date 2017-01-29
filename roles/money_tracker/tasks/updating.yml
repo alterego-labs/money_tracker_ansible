@@ -8,6 +8,7 @@
     clone: no
     update: yes
     force: yes
+    version: "{{money_tracker.git_version}}"
   tags: [updating]
 
 - name: Stop docker containers
