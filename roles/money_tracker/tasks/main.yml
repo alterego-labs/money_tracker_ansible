@@ -1,4 +1,6 @@
 ---
 
 - include: setupping.yml
+  tags: [setupping]
 - include: updating.yml
+  tags: [updating]
