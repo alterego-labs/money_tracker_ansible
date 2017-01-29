@@ -9,28 +9,23 @@
     update: yes
     force: yes
     version: "{{money_tracker.git_version}}"
-  tags: [updating]
 
 - name: Run money tracker service
   service:
     name: money_tracker
     state: stopped
-  tags: [updating]
 
 - name: Build docker containers
   shell: "./docker/manager.sh build"
   args:
     chdir: "{{money_tracker.app_path}}"
-  tags: [updating]
   register: build_result
 
 - name: The result of building containers command
   debug:
     var: build_result
-  tags: [updating]
 
 - name: Run money tracker service
   service:
     name: money_tracker
     state: started
-  tags: [updating]
