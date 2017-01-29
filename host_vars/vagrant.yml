@@ -12,4 +12,4 @@ database:
   user_login: sergio
   user_password: sergio
   db_name: money_tracker_prod
-  db_host: postgres
+  db_host: db_host
