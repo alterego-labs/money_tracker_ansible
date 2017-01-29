@@ -23,14 +23,20 @@
     dest: "{{money_tracker.app_path}}/docker/money_tracker.env"
   tags: [setupping]
 
+- name: Create init.d script for a service
+  template:
+    src: service.j2
+    dest: "/etc/init.d/money_tracker"
+    mode: "a+x"
+
 - name: Build docker containers
   shell: "./docker/manager.sh build"
   args:
     chdir: "{{money_tracker.app_path}}"
   tags: [setupping]
 
-- name: Run docker containers
-  shell: "./docker/manager.sh run"
-  args:
-    chdir: "{{money_tracker.app_path}}"
+- name: Run money tracker service
+  service:
+    name: money_tracker
+    state: started
   tags: [setupping]
