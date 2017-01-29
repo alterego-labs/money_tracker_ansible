@@ -14,12 +14,12 @@ INSTALL_DIR={{money_tracker.app_path}}
 SCRIPT_PATH="./docker/manager.sh"
 
 do_start(){
-   cd $INSTALL_DIR & $SCRIPT_PATH run;
+   cd $INSTALL_DIR && $SCRIPT_PATH run;
    echo "Money Tracker app is started!";
 }
 
 do_stop(){
-   cd $INSTALL_DIR & $SCRIPT_PATH stop;
+   cd $INSTALL_DIR && $SCRIPT_PATH stop;
    echo "Money Tracker app is stopped!";
 }
 
