@@ -1,0 +1,22 @@
+---
+
+- name: Stop money tracker service
+  service:
+    name: money_tracker
+    state: stopped
+
+- name: Remove source code
+  file:
+    path: "{{money_tracker.app_path}}"
+    recurse: no
+    state: absent
+
+- name: Remove service script
+  file:
+    path: "/etc/init.d/money_tracker"
+    state: absent
+
+- name: Remove log file
+  file:
+    path: "{{money_tracker.service_log_path}}"
+    state: absent

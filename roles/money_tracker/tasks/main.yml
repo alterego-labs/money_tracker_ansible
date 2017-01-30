@@ -2,5 +2,9 @@
 
 - include: setupping.yml
   tags: [setupping]
+
 - include: updating.yml
   tags: [updating]
+
+- include: removing.yml
+  tags: [removing]

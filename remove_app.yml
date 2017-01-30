@@ -1,0 +1,8 @@
+---
+
+- name: Remove application
+  hosts: webservers
+  become: Yes
+  roles:
+    - { name: money_tracker, tags: [app] }
+

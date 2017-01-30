@@ -31,3 +31,9 @@ If you want to update application to the specific release number use the next co
 ```bash
 $ ansible-playbook update_app.yml --tags=updating -e money_tracker.git_version=v1.1.1
 ```
+
+### Remove application
+
+```bash
+$ ansible-playbook remove_app.yml --tags=removing
+```
