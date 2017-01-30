@@ -3,3 +3,5 @@ money_tracker:
   app_path: /var/www/money_tracker
   repo: "https://github.com/alterego-labs/money_tracker.git"
   git_version: "HEAD"
+  script_path: "./docker/manager.sh"
+  service_log_path: "/var/log/money_tracker.log"

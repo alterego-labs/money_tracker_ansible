@@ -24,18 +24,9 @@
 - name: The result of building containers command
   debug:
     var: build_result
-
-# - name: Run money tracker service
-#   service:
-#     name: money_tracker
-#     state: started
+  when: build_result.stdout.find("Successfully built") == -1
 
 - name: Run money tracker service
-  shell: "./docker/manager.sh run"
-  args:
-    chdir: "{{money_tracker.app_path}}"
-  register: run_result
-
-- name: The result of the running
-  debug:
-    var: run_result
+  service:
+    name: money_tracker
+    state: started

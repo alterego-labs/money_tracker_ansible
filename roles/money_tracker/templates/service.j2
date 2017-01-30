@@ -11,15 +11,16 @@
 ### END INIT INFO
 
 INSTALL_DIR={{money_tracker.app_path}}
-SCRIPT_PATH="./docker/manager.sh"
+SCRIPT_PATH={{money_tracker.script_path}}
+LOGFILE_PATH={{money_tracker.service_log_path}}
 
 do_start(){
-   cd $INSTALL_DIR && $SCRIPT_PATH run;
+   cd $INSTALL_DIR && $SCRIPT_PATH run >>$LOGFILE_PATH 2>&1;
    echo "Money Tracker app is started!";
 }
 
 do_stop(){
-   cd $INSTALL_DIR && $SCRIPT_PATH stop;
+   cd $INSTALL_DIR && $SCRIPT_PATH stop >>$LOGFILE_PATH 2>&1;
    echo "Money Tracker app is stopped!";
 }
 
@@ -40,9 +41,9 @@ case "$1" in
    do_stop
    sleep 10;;
  restart)
-   so_stop
+   do_stop
    sleep 20
-   so_start;;
+   do_start;;
  status)
    do_status;;
  *)
