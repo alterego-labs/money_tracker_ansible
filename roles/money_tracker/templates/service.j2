@@ -23,6 +23,16 @@ do_stop(){
    echo "Money Tracker app is stopped!";
 }
 
+do_status(){
+   local status=`cd $INSTALL_DIR && $SCRIPT_PATH status`;
+   local running_flag="Running";
+   if [ "$status" = "$running_flag" ]; then
+     echo "Running";
+   else
+     exit 3;
+   fi
+}
+
 case "$1" in
  start)
    do_start;;
@@ -33,7 +43,9 @@ case "$1" in
    so_stop
    sleep 20
    so_start;;
+ status)
+   do_status;;
  *)
-   echo "Usage: money_tracker {start|stop|restart}" >&2
+   echo "Usage: money_tracker {start|stop|restart|status}" >&2
    exit 3;;
 esac

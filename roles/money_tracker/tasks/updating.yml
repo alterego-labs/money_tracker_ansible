@@ -25,7 +25,17 @@
   debug:
     var: build_result
 
+# - name: Run money tracker service
+#   service:
+#     name: money_tracker
+#     state: started
+
 - name: Run money tracker service
-  service:
-    name: money_tracker
-    state: started
+  shell: "./docker/manager.sh run"
+  args:
+    chdir: "{{money_tracker.app_path}}"
+  register: run_result
+
+- name: The result of the running
+  debug:
+    var: run_result
